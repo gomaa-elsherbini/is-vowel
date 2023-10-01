@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 
@@ -8,14 +7,9 @@ using namespace std;
 char readCharacter()
 {
 	char ch;
-	cout << "\nenter char to be counted?\n";
+	cout << "\nEnter a letter?\n";
 	cin >> ch;
 	return ch;
-}
-
-char invertLetterCase(char ch)
-{
-	return tolower(ch);
 }
 
 bool isVowelLetter(char ch)
@@ -24,26 +18,26 @@ bool isVowelLetter(char ch)
 	
 	for (int i = 0; i < 5; i++)
 	{
-		if (vowels[i] == invertLetterCase(ch))
+		if (vowels[i] == tolower(ch))
 			return true;
-		else
-			return false;
 	}
+	return false;
 }
 
-void printRes(bool res, char letter)
+void printRes(char letter)
 {
-	if (res)
-		cout << "Yes, Letter '" << letter << "' is vowel\n";
+
+	if (isVowelLetter(letter))
+		cout << "Yes, Letter '" << letter << "' is a vowel letter\n";
 	else
-		cout << "No, Letter '" << letter << "' is not vowel\n";
+		cout << "No, Letter '" << letter << "' is not a vowel letter\n";
 }
 
 int main()
 {
 	char ch = readCharacter();
 
-	printRes(isVowelLetter(ch), ch);
+	printRes(ch);
 	
 
 
